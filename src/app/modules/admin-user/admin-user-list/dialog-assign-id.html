@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Assign Customer ID to {{data.row.email}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="dialogForm">
+    <mat-form-field appereance="outline">
+      <mat-select formControlName="customerId" >
+        <mat-option
+          *ngFor="let option of data.customers"
+          [value]="option.CustomerId"
+          class="custom"
+        >
+          {{ option.CompanyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onAssignClick()">Assign</button>
+</div>

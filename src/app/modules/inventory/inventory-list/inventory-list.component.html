@@ -1,0 +1,57 @@
+<mat-drawer-container class="contenedor inventory" autosize>
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-md-12 sear">
+      <mat-form-field class="palletized-form-field">
+        <mat-label>{{ translate.LANG.EN.INVENTORY.SEARCH_FIELD }}</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+        <span class="material-icons">search</span>
+      </mat-form-field>
+      <a (click)="popUpConfiguration()" class="icon-vis">
+        <img src="assets/images/search.png" class="img-icon" alt="search">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 sear">
+      <mat-form-field class="palletized-form-field mx-auto" *ngIf='currentUser.role == "Administrator"'>
+        <mat-label>{{ translate.LANG.EN.INVENTORY.CUSTOMER_FIELD }}</mat-label>
+        <mat-select (selectionChange)="selectCustomer($event)" [(ngModel)]="selectedOption" [disabled]="customers.length == 0">
+          <mat-option *ngFor="let customer of customers" [value]="customer.CustomerId" class="custom">
+            {{ customer.CompanyName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="isRequesting">
+      <mat-spinner class="mat-spinner-color"></mat-spinner>
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport tvsItemSize="48" style="height: 100vh;">
+    <div>
+      <table mat-table [dataSource]="dataSource" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)" matSort class="mat-elevation-z8 table-striped inventory">
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.matColumnDef">
+          <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header class="header-palletized">
+            {{ column.header }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="column.cell(element) !== 'undefined'" [ngClass]="column.cell(element) == element.Status ? 'Status-' + element.Status : ''">
+              <div *ngIf="!isMobile">
+                {{ column.cell(element) }}
+              </div>
+              <div *ngIf="(column.cell(element) == element.AvailableQty) && isMobile" [matTooltip]="'min. stock: ' + element.InventoryUnit.MinimumStock">
+                {{ column.cell(element) }}
+              </div>
+              <div *ngIf="(column.cell(element) == element.ItemIdentifier.Sku) && isMobile" [matTooltip]="element.ItemDescription">
+                {{ column.cell(element) }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="6">{{ translate.LANG.EN.SHARED_MSG.NO_MATCH_DATA }} "{{input.value}}"</td>
+        </tr>
+      </table>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</mat-drawer-container>

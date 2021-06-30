@@ -1,0 +1,15 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="message col-lg-12 col-md-12 col-sm-12">
+      <div class="deactivate-text" *ngIf="currentUser?.status === 0">
+        {{ translate.LANG.EN.DASHBOARD.ACCOUNT_DEACTIVATED }}
+      </div>
+      <div class="deactivate-text" *ngIf="currentUser?.status === -1">
+        {{ translate.LANG.EN.DASHBOARD.ACCOUNT_BLOCKED }}
+      </div>
+      <div class="deactivate-text" *ngIf="currentUser?.status === 1 && currentUser.clientId === 'unasigned'">
+        {{ translate.LANG.EN.DASHBOARD.ACCOUNT_UNASIGNED }}
+      </div>
+    </div>
+  </div>
+</div>

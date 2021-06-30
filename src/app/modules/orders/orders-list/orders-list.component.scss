@@ -1,0 +1,40 @@
+@import '/src/assets/styles/vars';
+
+table {
+  width: 100%;
+}
+
+.search-options {
+  width: 500px;
+}
+
+.data-column .mat-container-dialog {
+  background: $c-navbar;
+}
+
+.data-column .mat-dialog-title {
+  color: $c-orange;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.data-column .mat-dialog-actions {
+  justify-content: space-around;
+}
+
+.data-column button.mat-focus-indicator.mat-button.mat-button-base:nth-child(1) {
+  background: $c-white;
+}
+
+.data-column button.mat-focus-indicator.mat-button.mat-button-base:nth-child(2) {
+  background: $c-orange;
+  color: $c-white;
+}
+
+.side-left-details .mat-drawer-inner-container {
+  overflow-x: hidden;
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: $c-orange !important;
+}

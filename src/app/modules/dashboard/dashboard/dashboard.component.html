@@ -1,0 +1,439 @@
+<mat-drawer-container autosize class="contenedor dash">
+  <div class="container-fluid">
+    <!-- Indicators -->
+    <div class="row" #activeClient>
+      <div class="col-lg-12 col-md-12 col-sm-12 mt-4 px-3" *ngIf="showIndicator(12)">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+            <mat-expansion-panel-header class="card-header">
+              <mat-panel-title class="card-category">
+                <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.MAP }}</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="card-body div chart-area map">
+              <div *ngIf="topStateShippedTo.length > 0 || currentUser?.role === 'Administrator'; else waitData">
+                <app-map-chart [chartData]="topStateShippedTo" [chartNumber]="9" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="12"></app-map-chart>
+              </div>
+              <ng-template #waitData>
+                <div class="mt-5" *ngIf="topStateShippedTo.length === 0; else showWarning">
+                  <mat-spinner class="mat-spinner-color"></mat-spinner>
+                </div>
+                <ng-template #showWarning>
+                  <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                </ng-template>
+              </ng-template>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <div #activeClient>
+      <div class="row" *ngIf="showIndicator(5) || showIndicator(6) || showIndicator(333)">
+        <div class="{{ setColumns(0) }} mt-5 px-3" *ngIf="showIndicator(5)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category gauge">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.GAUGE.FIRST }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area">
+                  <div *ngIf="totalOpenOrders.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                    <app-gauge-chart [chartData]="totalOpenOrders" [chartNumber]="5" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="5"></app-gauge-chart>
+                  </div>
+                  <ng-template #waitData>
+                    <div class="mt-5" *ngIf="totalOpenOrders.length === 0; else showWarning">
+                      <mat-spinner class="mat-spinner-color"></mat-spinner>
+                    </div>
+                    <ng-template #showWarning>
+                      <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                    </ng-template>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(0) }} mt-5 px-3" *ngIf="showIndicator(6)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category gauge">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.GAUGE.SECOND }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area">
+                  <div *ngIf="averageOpenOrderDate.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                    <app-gauge-chart [chartData]="averageOpenOrderDate" [chartNumber]="6" [isAdmin]="isAdmin" [customers]="customers" [isClockGauge]="true" [dashboardDataNumber]="6"></app-gauge-chart>
+                  </div>
+                  <ng-template #waitData>
+                    <div class="mt-5" *ngIf="averageOpenOrderDate.length === 0; else showWarning">
+                      <mat-spinner class="mat-spinner-color"></mat-spinner>
+                    </div>
+                    <ng-template #showWarning>
+                      <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                    </ng-template>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(0) }} mt-5 px-3" *ngIf="showIndicator(333)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category gauge">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.GAUGE.THIRD }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area">
+                  <div *ngIf="averageLineItemsPerOrderGaugeChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                    <app-gauge-chart [chartData]="averageLineItemsPerOrderGaugeChartData" [chartNumber]="3" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="3"></app-gauge-chart>
+                  </div>
+                  <ng-template #waitData>
+                    <div class="mt-5" *ngIf="averageLineItemsPerOrderGaugeChartData.length === 0; else showWarning">
+                      <mat-spinner class="mat-spinner-color"></mat-spinner>
+                    </div>
+                    <ng-template #showWarning>
+                      <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                    </ng-template>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div #activeClient>
+      <div class="row" *ngIf="showIndicator(444) || showIndicator(111) || showIndicator(222)">
+        <div class="{{ setColumns(1) }} mt-5 px-3" *ngIf="showIndicator(444)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category gauge">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.GAUGE.FOURTH }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area">
+                  <div class="chart-area">
+                    <div *ngIf="averageOrderClosingPeriodOfTimeGaugeChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                      <app-gauge-chart [chartData]="averageOrderClosingPeriodOfTimeGaugeChartData" [chartNumber]="4" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="4" [toHours]="true"></app-gauge-chart>
+                    </div>
+                    <ng-template #waitData>
+                      <div class="mt-5" *ngIf="averageOrderClosingPeriodOfTimeGaugeChartData.length === 0; else showWarning">
+                        <mat-spinner class="mat-spinner-color"></mat-spinner>
+                      </div>
+                      <ng-template #showWarning>
+                        <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                      </ng-template>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(1) }} mt-5 px-3" *ngIf="showIndicator(111)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category gauge">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.GAUGE.FIFTH }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class=" card-body">
+                <div class=" chart-area" *ngIf="picksPerHourGaugeChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-gauge-chart [chartData]="picksPerHourGaugeChartData" [chartNumber]="1" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="1"></app-gauge-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="picksPerHourGaugeChartData.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(1) }} mt-5 px-3" *ngIf="showIndicator(222)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category gauge">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.GAUGE.SIXTH }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area">
+                  <div *ngIf="lineItemsPicksPerHourGaugeChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                    <app-gauge-chart [chartData]="lineItemsPicksPerHourGaugeChartData" [chartNumber]="2" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="2"></app-gauge-chart>
+                  </div>
+                  <ng-template #waitData>
+                    <div class="mt-5" *ngIf="lineItemsPicksPerHourGaugeChartData.length === 0; else showWarning">
+                      <mat-spinner class="mat-spinner-color"></mat-spinner>
+                    </div>
+                    <ng-template #showWarning>
+                      <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                    </ng-template>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div #activeClient>
+      <div class="row" *ngIf="showIndicator(8) || showIndicator(9)">
+        <div class="{{ setColumns(2) }} mt-5 px-3" *ngIf="showIndicator(8)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.PIE.FIRST }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body div chart-area">
+                <div *ngIf="shippingMethod.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-pie-chart [chartData]="shippingMethod" [chartNumber]="7" [category]="'Shipping method'" [value]="'Shippings'" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="8"></app-pie-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="shippingMethod.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(2) }} mt-5 px-3" *ngIf="showIndicator(9)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.PIE.SECOND }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body div chart-area">
+                <div *ngIf="shippingCarrier.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-pie-chart [chartData]="shippingCarrier" [chartNumber]="8" [category]="'Shipping Carriers'" [value]="'Shippings'" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="9"></app-pie-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="shippingCarrier.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div #activeClient>
+      <div class="row" *ngIf="showIndicator(1) || showIndicator(2)">
+        <div class="{{ setColumns(3) }} mt-5 px-3" *ngIf="showIndicator(1)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.BAR.FIRST }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class=" chart-area"
+                  *ngIf="picksPerHourColumnChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-line-chart [chartData]="picksPerHourColumnChartData" [chartNumber]="1" [serieName]="'Quantity'" [shapeGroupField]="'average'" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="1">
+                  </app-line-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="picksPerHourColumnChartData.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(3) }} mt-5 px-3" *ngIf="showIndicator(2)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.BAR.SECOND }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area" *ngIf="lineItemsPicksPerHourColumnChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-line-chart [chartData]="lineItemsPicksPerHourColumnChartData" [chartNumber]="2" [serieName]="'Quantity'" [shapeGroupField]="'average'" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="2"></app-line-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="lineItemsPicksPerHourColumnChartData.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div #activeClient>
+      <div class="row" *ngIf="showIndicator(3) || showIndicator(4)">
+        <div class="{{ setColumns(4) }} mt-5 px-3" *ngIf="showIndicator(3)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.BAR.THIRD }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                <div class="chart-area">
+                  <div class="chart-area" *ngIf="averageLineItemsPerOrderColumnChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                    <app-line-chart [chartData]="averageLineItemsPerOrderColumnChartData" [chartNumber]="3" [serieName]="'Quantity'" [shapeGroupField]="'average'" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]='3'></app-line-chart>
+                  </div>
+                  <ng-template #waitData>
+                    <div class="mt-5" *ngIf="averageLineItemsPerOrderColumnChartData.length === 0; else showWarning">
+                      <mat-spinner class="mat-spinner-color"></mat-spinner>
+                    </div>
+                    <ng-template #showWarning>
+                      <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                    </ng-template>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(4) }} mt-5 px-3" *ngIf="showIndicator(4)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.BAR.FOURTH }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body">
+                  <div class="chart-area" *ngIf="averageOrderClosingPeriodOfTimeColumnChartData.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-line-chart [chartData]="averageOrderClosingPeriodOfTimeColumnChartData" [chartNumber]="4" [serieName]="'Quantity'" [shapeGroupField]="'average'" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="4"></app-line-chart>
+                  </div>
+                  <ng-template #waitData>
+                    <div class="mt-5" *ngIf="averageOrderClosingPeriodOfTimeColumnChartData.length === 0; else showWarning">
+                      <mat-spinner class="mat-spinner-color"></mat-spinner>
+                    </div>
+                    <ng-template #showWarning>
+                        <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                    </ng-template>
+                  </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div #activeClient>
+      <div class="row" *ngIf="showIndicator(7) || showIndicator(10) || showIndicator(11)" >
+        <div class="{{ setColumns(5) }} mt-5 px-3" *ngIf="showIndicator(7)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.TOP.FIRST }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body div chart-area">
+                <div *ngIf="oldestOpenOrderDate.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-top-chart [chartData]="oldestOpenOrderDate" [chartNumber]="10" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="7" [category]="'CustomerName'" [value]="'OrderId'" [auxiliarKey]="'CreationDate'" [isTopFive]="true"></app-top-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="oldestOpenOrderDate.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(5) }} mt-5 px-3" *ngIf="showIndicator(10)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.TOP.SECOND }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body div chart-area">
+                <div *ngIf="( hottesItems | json) != '{}' || currentUser?.role == 'Administrator'; else waitData">
+                  <app-top-chart [chartData]="hottesItems" [chartNumber]="11" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="10" [category]="'HotItem'" [value]="'Quantity'" [auxiliarKey]="'empty'" [isTopFive]="true"></app-top-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="( hottesItems | json) == '{}'; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="{{ setColumns(5) }} mt-5 px-3" *ngIf="showIndicator(11)">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="true" class="card card-chart">
+              <mat-expansion-panel-header class="card-header">
+                <mat-panel-title class="card-category">
+                  <h5 class="title">{{ translate.LANG.EN.DASHBOARD.INDICATORS.TOP.THIRD }}</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="card-body div chart-area">
+                <div *ngIf="packageUsage.length > 0 || currentUser?.role == 'Administrator'; else waitData">
+                  <app-top-chart [chartData]="packageUsage" [chartNumber]="12" [isAdmin]="isAdmin" [customers]="customers" [dashboardDataNumber]="11" [category]="'Package'" [value]="'Usage'" [isTopFive]="true"></app-top-chart>
+                </div>
+                <ng-template #waitData>
+                  <div class="mt-5" *ngIf="packageUsage.length === 0; else showWarning">
+                    <mat-spinner class="mat-spinner-color"></mat-spinner>
+                  </div>
+                  <ng-template #showWarning>
+                    <div class="deactivate-text">{{ translate.LANG.EN.DASHBOARD.NOT_CONNECT }}</div>
+                  </ng-template>
+                </ng-template>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicators Setting -->
+    <div class="row">
+      <div class="mt-5 mb-5 col-lg-12 col-md-12 col-sm-12" >
+        <app-indicator-toggle class="indicator"></app-indicator-toggle>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 spacer"></div>
+    </div>
+  </div>
+</mat-drawer-container>

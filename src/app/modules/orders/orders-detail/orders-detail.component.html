@@ -1,0 +1,117 @@
+<div class="main-container">
+
+    <div fxLayout="row" style="height: 100vh; overflow-y: hidden;">
+
+        <!-- Close sidebar button -->
+        <div class="button-close-side">
+            <button type="button" fxFlexFill mat-button (click)="sideNav.close()">
+                <mat-icon>double_arrow</mat-icon>
+            </button>
+        </div>
+
+        <!-- Details Content -->
+        <div fxLayout="column" fxFlexFill>
+
+
+            <!-- Items Table -->
+            <div class="detail-table-container ">
+                <table mat-table fxFlexFill [dataSource]="rowData.OrderItems" cdkDropList cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="drop($event)" class="mat-elevation-z8 table-striped">
+
+                    <ng-container *ngFor="let column of columns" [matColumnDef]="column.matColumnDef">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef class="detailes"> {{column.header}}</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div *ngIf="column.cell(element) !== 'undefined'">
+                                {{column.cell(element)}}
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                </table>
+            </div>
+
+            <!-- Customer Information Section -->
+            <mat-expansion-panel expanded hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="col-lg-12 pt-3">
+                            <h3 class="text-center title">Customer <strong>{{rowData.CustomerName}}</strong></h3>
+                            <h4 class="text-center subtitle">Warehouse <strong>Palletized Doral</strong></h4>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="box-orders">
+                        <h3 class="detalles">OrderID: <span>{{rowData.OrderId}}</span></h3>
+                        <h3 class="detalles">Customer: <span>{{rowData.CustomerName}}</span></h3>
+                        <h3 class="detalles">Reference: <span>{{rowData.ReferenceNum}}</span></h3>
+                        <h3 class="detalles">Tracking: <span>{{rowData.Tracking}}</span></h3>
+                    </div>
+                    <div fxFlex="50%" class="box-orders">
+                        <h3 class="detalles">Created Date: <span>{{rowData.CreationDate}}</span></h3>
+                        <h3 class="detalles">Weight: <span>{{rowData.Weight}}</span></h3>
+                        <h3 class="detalles">Volume: <span>{{rowData.Volume}}</span></h3>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <!--  -->
+            <mat-expansion-panel expanded hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="col-lg-12">
+                            <h3 class="text-center title">Contact <strong>Information</strong></h3>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div fxLayout="row">
+                    <div fxFlex="50%" class="box-orders">
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Contact ID: <span>{{rowData.ShipTo.ContactId}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Company: <span>{{rowData.ShipTo.CompanyName}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Recipient: <span>{{rowData.ShipTo.Name}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Address: <span>{{rowData.ShipTo.Address1}}
+                                {{rowData.ShipTo.Address2}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            State: <span>{{rowData.ShipTo.State}}</span>
+                        </h3>
+                    </div>
+                    <div fxFlex="50%" class="box-orders">
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            City: <span>{{rowData.ShipTo.City}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Postal Code: <span>{{rowData.ShipTo.Zip}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Country: <span>{{rowData.ShipTo.Country}}
+                                {{rowData.ShipTo.Address2}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Phone: <span>{{rowData.ShipTo.PhoneNumber}}</span>
+                        </h3>
+                        <h3 class="detalles" *ngIf="rowData.ShipTo !== undefined">
+                            Email: <span>{{rowData.ShipTo.EmailAddress}}</span>
+                        </h3>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <div class="spacer"></div>
+        </div>
+    </div>
+</div>
+
+

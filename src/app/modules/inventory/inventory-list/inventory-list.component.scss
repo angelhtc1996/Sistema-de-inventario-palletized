@@ -1,0 +1,13 @@
+@import '/src/assets/styles/vars';
+
+table {
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: $c-orange !important;
+}

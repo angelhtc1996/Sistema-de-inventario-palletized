@@ -1,0 +1,37 @@
+@import '/src/assets/styles/vars';
+
+.admin table th.mat-header-cell:first-of-type {
+  width: 200px;
+  background-position-y: center;
+}
+
+// Dark theme
+.dark-theme .box-admin {
+  background: $c-navbar;
+  font-weight: 500;
+  margin-left: 30px;
+}
+
+.dark-theme .box-admin button.mat-menu-item {
+  color: $c-white;
+}
+
+.dark-theme .box-admin button.mat-menu-item:hover {
+  color: $c-white;
+  background: $c-orange;
+}
+
+// Light theme
+.light-theme .box-admin {
+  background: $c-white;
+  color: $c-black;
+  font-weight: 500;
+  margin-left: 30px;
+}
+
+.light-theme .box-admin .mat-option {
+  color: $c-white;
+}
+cdk-virtual-scroll-viewport{
+  height: 90vh !important;
+}

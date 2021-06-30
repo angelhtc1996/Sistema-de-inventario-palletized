@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Customization columns</h1>
+<div mat-dialog-content>
+    <div *ngIf="availableColumns.length == 0; else columns">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <ng-template #columns>
+        <div *ngFor="let column of availableColumns; let index = index">
+            <mat-checkbox (change)="changeValue($event.checked, index)" [checked]="column.status" >{{ column.name  }}</mat-checkbox>
+        </div>
+    </ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="close()">Close</button>
+    <button mat-button (click)="apply()">Apply</button>
+</div>

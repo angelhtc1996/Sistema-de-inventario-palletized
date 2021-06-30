@@ -1,0 +1,30 @@
+<mat-accordion multi>
+  <mat-expansion-panel class="card-indicator" hideToggle>
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon class="title mr-3">settings</mat-icon>
+        <h5 class="title">{{ translations.LANG.EN.DASHBOARD.SETTINGS.TITLE }}</h5>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <article class="row">
+      <section class="indicator-list col-lg-3 col-md-6 col-sm-12 mb-3" *ngFor="let item of indicatorList">
+        <mat-slide-toggle class="indicator-style" [checked]="item.active" (change)="toggleIndicator(item.id, $event)">
+          <span class="indicator-title" [ngClass]="{
+            'indicator-title-white': isDarkTheme,
+            'indicator-title-black': !isDarkTheme
+          }">{{ item.title }}</span>
+          <span [ngClass]="{
+            'indicator-type-light': isDarkTheme,
+            'indicator-type-dark': !isDarkTheme
+          }">{{ item.type }}</span>
+        </mat-slide-toggle>
+      </section>
+    </article>
+
+    <button mat-flat-button color="primary" class="button-style" (click)="saveChanges()">{{ translations.LANG.EN.DASHBOARD.SETTINGS.BUTTON.SAVE }}</button>
+    <button mat-flat-button color="primary" class="button-style" (click)="resetSetting()">{{ translations.LANG.EN.DASHBOARD.SETTINGS.BUTTON.RESET }}</button>
+
+  </mat-expansion-panel>
+</mat-accordion>

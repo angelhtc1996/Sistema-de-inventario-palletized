@@ -1,0 +1,468 @@
+@import '/src/assets/styles/vars';
+
+.side-left-details {
+  border-left: 1px solid #ffffff69;
+}
+
+.sear .icon-vis {
+  background: transparent;
+  padding: 4px;
+  box-shadow: none;
+  text-align: initial;
+  cursor: pointer;
+  border: 0 !important;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.sear span.material-icons {
+  display: none;
+}
+
+.sear {
+  display: flex;
+}
+
+a.icon-calen {
+  border: 0 !important;
+}
+
+.icon-vis span.mat-ripple.mat-button-ripple {
+  border: 0;
+}
+
+.sear2 {
+  display: flex;
+}
+
+.cale {
+  align-self: center;
+}
+
+.cale {
+  display: none;
+}
+
+.set button.mat-menu-item .material-icons {
+  font-size: 20px;
+  margin-right: 2px;
+  position: relative;
+  top: 5px;
+}
+
+.set button:focus {
+  outline: none;
+}
+
+.set {
+  margin-left: 20px;
+}
+
+.set button.mat-focus-indicator.mat-menu-item {
+  text-align: left;
+  padding: 0 10px;
+  color: #b5b3b3;
+}
+
+.set button.mat-focus-indicator.mat-menu-item:hover {
+  background: $c-orange;
+  transition: .3s ease-in-out;
+  color: $c-white;
+  font-weight: 600;
+}
+
+.calendar label.mat-radio-label {
+  margin-right: 20px;
+}
+
+.calendar .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $c-orange;
+}
+
+.calendar .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: $c-orange;
+}
+
+.calendar button.mat-focus-indicator.apply.mat-flat-button.mat-button-base {
+  background: $c-orange;
+  color: $c-white;
+}
+
+.palletized-form-field.mat-form-field-appearance-legacy .mat-form-field-underline,
+.palletized-form-field.mat-form-field-appearance-legacy .mat-form-field-ripple,
+.palletized-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-underline,
+.palletized-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-ripple {
+  background-color: $c-orange;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: $c-orange !important;
+}
+
+.mat-sort-header-arrow, [dir=rtl] .mat-sort-header-position-before .mat-sort-header-arrow {
+  margin: 0 0 0 -10px;
+  color: transparent;
+}
+
+.orders .mat-sort-header-content {
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 135px;
+}
+
+.icon-vis img.img-icon {
+  width: 50px;
+  margin-top: -5px;
+  height: auto;
+}
+
+a.icon-calen img {
+  width: 50px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.form-sear {
+  align-items: flex-end;
+}
+
+.orders table th.mat-header-cell:first-of-type {
+  width: 200px;
+  background-position-y: center;
+}
+
+.calendar .mat-datepicker-toggle, .mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button {
+  color: $c-white;
+}
+
+.side-left-details .mat-drawer-inner-container {
+  overflow-x: hidden;
+}
+
+// Dark theme
+.dark-theme .mat-paginator-container, .mat-select-value, .mat-select-arrow, .mat-icon-button.mat-button-disabled.mat-button-disabled,.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: rgb(255 254 254) !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background: $c-white !important;
+}
+
+.dark-theme .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: rgb(255 254 254);
+}
+
+.dark-theme button.mat-focus-indicator.mat-menu-trigger.mat-button.mat-button-base {
+  padding: 2px 30px;
+  color: $c-white;
+}
+
+.dark-theme .calendar .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $c-black;
+}
+
+.dark-theme .mat-select-panel {
+  background: $i-back-img-black;
+  background-size: cover;
+  margin-top: 33px;
+}
+
+.dark-theme .mat-option {
+  color: $c-white;
+}
+
+.dark-theme .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: $c-orange;
+  color: $c-white;
+  font-weight: 500;
+}
+
+.dark-theme .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  color: $c-white;
+}
+
+.dark-theme .data-column .mat-dialog-container {
+  background: $c-navbar;
+}
+
+.dark-theme .data-column .mat-dialog-title {
+  color: $c-white;
+  text-align: center;
+  font-weight: 600;
+}
+
+.dark-theme .calendar {
+  padding: 10px;
+  overflow: hidden !important;
+  background: $c-navbar;
+  color: $c-white;
+}
+
+.dark-theme .table {
+  color: $c-white;
+}
+
+.dark-theme .table-hover tbody tr:hover {
+  color: $c-orange;
+  background-color: rgb(171 171 171 / 55%);
+}
+
+.dark-theme text {
+  fill: $c-white !important;
+}
+
+.dark-theme h3.detalles {
+  font-size: 12px;
+  line-height: 1.2;
+  color: $c-white;
+  font-family: $f-secundary;
+}
+
+h3.detalles span {
+  font-weight: 500;
+  font-family: $f-primary;
+}
+
+.dark-theme h3.title {
+  font-size: 12px;
+  color: $c-aqua;
+  font-family: $f-secundary;
+  line-height: 1;
+}
+
+.dark-theme h4.subtitle {
+  margin-top: -20px;
+  font-size: 12px;
+  color: $c-aqua;
+  font-family: $f-primary;
+}
+
+.dark-theme th.detailes {
+  color: $c-white;
+  border: 2px solid $c-aqua;
+  border-radius: 40px;
+  height:30px !important;
+  text-align: center;
+  border-spacing: unset;
+  width: 90px !important;
+  background: $c-navbar;
+}
+
+.dark-theme .filter span.filter-taco {
+  color: $c-white;
+}
+
+.dark-theme .button-close-side mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  color: $c-orange;
+}
+
+// Light theme
+.light-theme .mat-drawer-container {
+  background: $i-back-img-white;
+  background-size: 100% 100%;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.light-theme .mat-paginator {
+  background: #ffffff00;
+}
+
+.light-theme .mat-paginator-container, .light-theme .mat-select-value, .light-theme .mat-select-arrow, .light-theme .mat-form-field-appearance-legacy .mat-form-field-underline, .light-theme .mat-icon-button.mat-button-disabled.mat-button-disabled {
+  color: $c-black !important;
+}
+
+.light-theme .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #2f2d2e2b !important;
+}
+
+.light-theme .mat-cell, .mat-footer-cell {
+  color: $c-black;
+  text-align: left;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-left: 10px !important;
+}
+
+.light-theme .mat-table thead, .light-theme [mat-header-row] {
+  background: transparent !important;
+}
+
+.light-theme .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $c-black !important;
+}
+
+.light-theme .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background: $c-black !important;
+}
+
+.light-theme button.name.mat-focus-indicator.mat-menu-trigger.mat-button.mat-button-base {
+  padding: 2px 30px;
+  color: $c-white;
+}
+
+.light-theme .name span.mat-ripple.mat-button-ripple {
+  border: none;
+}
+
+.light-theme button.mat-focus-indicator.mat-menu-trigger.mat-button.mat-button-base {
+  padding: 2px 30px;
+  color: $c-black;
+}
+
+.light-theme .mat-select-panel {
+  background: $i-back-img-white;
+  background-size: cover;
+}
+
+.light-theme .mat-option {
+  color: $c-black;
+}
+
+.light-theme .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: $c-orange;
+  color: $c-black;
+  font-weight: 500;
+}
+
+.light-theme .data-column .mat-dialog-container {
+  background: $c-white;
+}
+
+.light-theme .data-column .mat-dialog-title {
+  color: $c-orange;
+  text-align: center;
+  font-weight: 600;
+}
+
+.light-theme .data-column .mat-dialog-content {
+  color: $c-black;
+  text-align: left;
+  font-weight: 600;
+}
+
+.light-theme .data-column .mat-dialog-actions {
+  justify-content: space-around;
+}
+
+.light-theme .data-column button.mat-focus-indicator.mat-button.mat-button-base:nth-child(1) {
+  background: $c-white;
+}
+
+.light-theme .data-column button.mat-focus-indicator.mat-button.mat-button-base:nth-child(2) {
+  background: $c-orange;
+  color: $c-white;
+}
+
+.light-theme .data-column .mat-select-value {
+  color: $c-black;
+}
+
+.light-theme .palletized-form-field.mat-form-field-appearance-legacy.mat-focused .mat-form-field-label {
+  color: $c-black !important;
+}
+
+.light-theme .calendar .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $c-black !important;
+}
+
+.light-theme .calendar .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background: $c-black !important;
+}
+
+.light-theme .box-admin button.mat-menu-item:hover {
+  color: $c-white;
+  background: $c-orange;
+}
+
+.light-theme .main-container {
+  background: $i-back-img-white;
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+.light-theme th.detailes {
+  color: $c-black !important;
+}
+
+.light-theme mat-expansion-panel.mat-expansion-panel.mat-expanded {
+  background: $i-back-img-white !important;
+  background-size: cover !important;
+  background-position: bottom !important;
+}
+
+.light-theme mat-drawer.mat-drawer.side-left-details.ng-tns-c97-7.ng-trigger.ng-trigger-transform.mat-drawer-end.mat-drawer-side.ng-star-inserted.mat-drawer-opened {
+  background: transparent;
+}
+
+.light-theme .mat-select-panel {
+  background: $i-back-img-white;
+  background-size: cover;
+  margin-top: 33px;
+}
+
+.light-theme text {
+  fill: $c-black !important;
+}
+
+.light-theme h3.title {
+  font-size: 14px;
+  color: $c-orange;
+}
+
+.light-theme h4.subtitle {
+  margin-top: -20px;
+  font-size: 12px;
+  color: $c-orange;
+}
+
+.light-theme h3.detalles {
+  font-size: 12px;
+  line-height: 0.5;
+  color: $c-black;
+}
+
+.light-theme th.detailes {
+  color: $c-black;
+  height: 30px !important;
+  border: 2px solid $c-orange;
+  border-radius: 40px;
+  text-align: center;
+  border-spacing: unset;
+  width: 90px !important;
+  background: #f1f1f1;
+}
+
+.light-theme mat-expansion-panel-header {
+  background: $i-back-img-white !important;
+  margin-bottom: 5px;
+}
+
+.light-theme .calendar {
+  padding: 10px;
+  overflow: hidden !important;
+  background: $c-white;
+  color: $c-black;
+}
+
+.light-theme .calendar .mat-datepicker-toggle, .mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button {
+  color: #060606 !important;
+}
+
+.light-theme .table {
+  color: $i-back-img-black;
+}
+
+.light-theme .table-hover tbody tr:hover {
+  color: $c-orange;
+  background-color: rgb(171 171 171 / 55%);
+}
+
+.light-theme .filter span.filter-taco {
+  color: $c-black;
+}
+
+.light-theme .message-data {
+  color: $c-black !important;
+}

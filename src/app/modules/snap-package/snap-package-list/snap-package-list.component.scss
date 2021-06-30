@@ -1,0 +1,10 @@
+@import '/src/assets/styles/vars';
+
+.mat-spinner-color::ng-deep circle {
+  stroke: $c-orange !important;
+}
+
+.image-snap {
+  width: 90%;
+  border-radius: 10px;
+}

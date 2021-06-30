@@ -1,0 +1,26 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
+// NgxToastr
+@import '~ngx-toastr/toastr';
+
+// Fuentes
+@import './fonts.scss';
+
+// Estilos globales
+@import './global.scss';
+
+// Componentes
+@import './components/menu.scss';
+@import './components/dashboard.scss';
+@import './components/tables.scss';
+@import './components/order.scss';
+@import './components/inventory.scss';
+@import './components/snap.scss';
+@import './components/admin.scss';
+@import './components/indicator-toggle.scss';
+
+// Medias Queries
+@import './medias.scss';

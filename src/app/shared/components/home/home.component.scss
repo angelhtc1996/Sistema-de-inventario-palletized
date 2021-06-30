@@ -1,0 +1,53 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  width: 30%;
+  position: relative;
+  right: -60px;
+  left: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #00000080;
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+  width: 350px;
+}
+
+.img-profile {
+  width: 32px;
+  border-radius: 50%;
+}
+
+.viewport-item {
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.expandBtn {
+  opacity: 0.5;
+}

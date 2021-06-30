@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row map-f mt-3">
+    <!--Customer-->
+    <div class="col-sm-12 col-md-12 col-lg-12 sear" *ngIf="isAdmin">
+      <mat-form-field class="palletized-form-field mx-auto">
+        <mat-label>{{ translations.LANG.EN.DASHBOARD.SELECT_CUSTOMERS }}</mat-label>
+        <mat-select (selectionChange)="showOptionVal($event.value)" [value]="customerId">
+          <mat-option class="custom" [value]="customer.CustomerId" *ngFor="let customer of customers">
+            {{ customer.CompanyName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!--Spinner-->
+    <div class="col-sm-12 col-md-12 col-lg-12" style="height: 150px;" *ngIf="!showChart && customerId > 0 && isAdmin">
+      <mat-spinner class="mat-spinner-color mx-auto"></mat-spinner>
+    </div>
+
+    <!--Map-->
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div [id]="'mapChart' + chartNumber" style="width: 100%; height: 500px" [ngStyle]="{ 'display': showChart ? 'block' : 'none' }">
+      </div>
+    </div>
+
+    <!--Filters-->
+    <div class="col-sm-12 col-md-12 col-lg-12 text-center mt-3 mb-1" #filterIdentifier [ngStyle]="{ 'display': showChart ? 'block' : 'none' }">
+      <p class="message-data">
+        {{ messageTime }}
+        <span class="text-danger" *ngIf="chartData.length === 0"> - {{ translations.LANG.EN.DASHBOARD.NOT_AVAILABLE }}</span>
+      </p>
+    </div>
+    <div class="filter my-2 mx-auto" *ngIf="showChart">
+      <button class="btn-mobile mr-3" mat-raised-button [class.selected]="time === 'D'" (click)="filterDataBy('D')">
+        {{ translations.LANG.EN.DASHBOARD.DAY }}
+      </button>
+      <button class="btn-mobile mr-3" mat-raised-button [class.selected]="time === 'W'" (click)="filterDataBy('W')">
+        {{ translations.LANG.EN.DASHBOARD.WEEK }}
+      </button>
+      <button class="btn-mobile" mat-raised-button [class.selected]="time === 'M'" (click)="filterDataBy('M')">
+        {{ translations.LANG.EN.DASHBOARD.MONTH }}
+      </button>
+    </div>
+  </div>
+</div>

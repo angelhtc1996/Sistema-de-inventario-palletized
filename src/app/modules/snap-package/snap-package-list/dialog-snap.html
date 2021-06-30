@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>
+  <div mat-dialog-actions>
+    <button mat-button>
+      <a [href]="data.picture" [download]="data.tracking" target="_blank">
+        <span class="material-icons">cloud_download</span>
+      </a>
+    </button>
+    <button mat-button (click)="onNoClick()">
+      <span class="material-icons">close</span>
+    </button>
+  </div>
+</h1>
+<div mat-dialog-content style="min-height: 200px">
+  <div *ngIf="!data.picture; else showPicture">
+    <mat-spinner class="mat-spinner-color"></mat-spinner>
+  </div>
+  <ng-template #showPicture>
+    <img [src]="data.picture" [alt]="data.tracking" class="image-snap" />
+  </ng-template>
+</div>

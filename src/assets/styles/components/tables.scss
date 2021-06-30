@@ -1,0 +1,235 @@
+@import '/src/assets/styles/vars';
+
+.mat-paginator {
+  background: #ffffff00;
+}
+
+.dark-theme .data-column .mat-dialog-content {
+  color: $c-white;
+  text-align: left;
+  font-weight: 600;
+}
+
+.dark-theme .data-column .mat-dialog-actions {
+  justify-content: space-around;
+}
+
+.dark-theme .data-column button.mat-focus-indicator.mat-button.mat-button-base:nth-child(1) {
+  background: $c-white;
+}
+
+.dark-theme .data-column button.mat-focus-indicator.mat-button.mat-button-base:nth-child(2) {
+  background: $c-orange;
+  color: $c-white;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $c-orange;
+}
+
+.dark-theme .message-data {
+  color: $c-white !important;
+}
+
+mat-drawer.mat-drawer.ng-tns-c105-2.ng-trigger.ng-trigger-transform.mat-drawer-side.mat-drawer-opened.ng-star-inserted {
+  width: 15%;
+  padding: 30px;
+}
+
+g.tick {
+  color: $c-white;
+}
+
+table.mat-table {
+  border-collapse: separate;
+  background: transparent !important;
+}
+
+table .mat-cell, .mat-footer-cell {
+  color: rgb(255 255 255 / 87%);
+  text-align: left;
+  font-size: 12px !important;
+}
+
+table.mat-table.cdk-table.mat-sort.mat-elevation-z8 {
+  width: 100%;
+}
+
+table.mat-table.orders {
+  border-collapse: collapse;
+  max-height: 500px;
+  overflow: auto;
+}
+
+th span img {
+  background-color: $c-brown;
+  width: 35% !important;
+  float: right !important;
+  padding: 5% 5% 5% 6% !important;
+  border-top-right-radius: 22px !important;
+  border-bottom-right-radius: 22px !important;
+}
+
+table.mat-table {
+  border-collapse: separate;
+}
+
+table th.mat-header-cell:first-of-type {
+  padding-left: 13px;
+}
+tr.mat-row {
+  box-shadow: inset 0 -1px 0 0 rgb(132 132 132 / 33%);
+}
+
+table.mat-table {
+  border-collapse: separate;
+  background: transparent !important;
+}
+
+table.mat-table.cdk-table.mat-sort.mat-elevation-z8 {
+  width: 100%;
+}
+
+table.mat-table.orders {
+  border-collapse: collapse;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.table-orders {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+table.mat-table {
+  border-collapse: separate;
+}
+
+.mat-table {
+  background: transparent !important;
+}
+
+table.mat-table {
+  border-collapse: separate;
+  background: transparent !important;
+}
+
+table.mat-table.cdk-table.mat-sort.mat-elevation-z8 {
+  width: 100%;
+}
+
+th.header-palletized {
+  background: url('/assets/images/fondo-header.png');
+  background-size: 170px 30px;
+  background-repeat: no-repeat;
+  color: $c-white;
+  background-position-y: center;
+}
+
+.mat-sort-header-content {
+  justify-content: space-between;
+  width: 145px;
+  font-size: 14px;
+}
+
+.mat-sort-header-arrow, [dir=rtl] .mat-sort-header-position-before .mat-sort-header-arrow {
+  margin: 0 0 0 -10px;
+  color: transparent;
+}
+
+.orders .mat-sort-header-content {
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 135px;
+}
+
+.Status-Shipped{
+  background: url('/assets/images/Shipped.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.Status-Canceled {
+  background: url('/assets/images/Acknowledge.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;padding-left: 25px;
+}
+
+.Status-Processing {
+  background: url('/assets/images/Processing.png');
+  color: $c-white;
+  background-size: 130px 20px;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.Status-Delayed {
+  background: url('/assets/images/Delayed.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.Status-Low {
+  background: url('/assets/images/intermedio.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.Status-Critical {
+  background: url('/assets/images/closed.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.Status-Unavailable {
+  background: url('/assets/images/Delayed.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.Status-High {
+  background: url('/assets/images/open.png');
+  color: $c-white;
+  border-radius: 5px;
+  background-size: 130px 20px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+tr.mat-row, tr.mat-footer-row {
+  height: 50px !important;
+}
+
+tr.mat-header-row {
+  height: 30px !important;
+}
+
+tr.mat-row:hover {
+  cursor: pointer;
+}
+mat-form-field.mat-form-field.palletized-form-field.ng-tns-c136-35.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-should-float {
+  margin: 0 auto;
+}
+.order.mat-drawer-content, .inventory .mat-drawer-content {
+  overflow: hidden; 
+}

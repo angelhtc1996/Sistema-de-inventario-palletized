@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row mt-2">
+    <!--Customer-->
+    <div class="col-sm-12 col-md-12 col-lg-12 sear" *ngIf="isAdmin">
+      <mat-form-field class="palletized-form-field mx-auto">
+        <mat-label>{{ translations.LANG.EN.DASHBOARD.SELECT_CUSTOMERS }}</mat-label>
+        <mat-select (selectionChange)="showOptionVal($event.value)" [value]="customerId">
+          <mat-option class="custom" [value]="customer.CustomerId" *ngFor="let customer of customers">
+            {{ customer.CompanyName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!--Spinner-->
+    <div class="col-sm-12 col-md-12 col-lg-12" style="height: 150px;" *ngIf="!showChart && customerId > 0 && isAdmin">
+      <mat-spinner class="mat-spinner-color mx-auto"></mat-spinner>
+    </div>
+
+    <!--Table-->
+    <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="chartData.length > 0; else noSelectData">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <th *ngFor="let column of columns">{{ column }}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of values">
+              <td *ngFor="let item of data | keyvalue">{{ item.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--Without data-->
+    <ng-template #noSelectData>
+      <p class="deactivate-text" *ngIf="showChart && chartData.length === 0 && customerId > 0">
+        {{ translations.LANG.EN.DASHBOARD.NO_DATA }}
+      </p>
+    </ng-template>
+  </div>
+</div>

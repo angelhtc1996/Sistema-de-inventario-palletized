@@ -1,0 +1,19 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="logo-palletized">
+      <img src="/assets/images/logo-blanco.png" alt="blanco" />
+    </div>
+    <div class="icon-palletized">
+      <img src="/assets/images/icon-orange.png" alt="orange" />
+    </div>
+    <form>
+      <input
+        type="submit"
+        class="fadeIn fourth"
+        [ngClass]="{ 'is-busy': isBusy }"
+        [disabled]="isBusy"
+        [value]="isBusy ? 'CONNECTING...' : 'LOG IN'"
+        (click)="signInWithGoogle()" />
+    </form>
+  </div>
+</div>

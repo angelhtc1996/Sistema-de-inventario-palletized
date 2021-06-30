@@ -1,0 +1,127 @@
+@import '/src/assets/styles/vars';
+
+.dash {
+  width: auto !important;
+  margin: auto !important;
+}
+
+.contenedor {
+  width: auto;
+  padding-left: 10px;
+  padding-top: 20px;
+  margin: auto;
+  height: 100vh;
+}
+
+.mat-drawer-content {
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+.card-chart .card-header .card-category {
+  font-family: $f-primary;
+  font-size: 20px;
+  color: $c-orange !important;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.card-header {
+  background: $c-navbar !important;
+  padding: 10px;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.map mat-select {
+  width: 100%;
+}
+
+.map-f {
+  justify-content: center;
+}
+
+.card:hover {
+  background: #88878729 !important;
+  transition: ease-in 0.3s;
+}
+
+.content-m {
+  display: none;
+}
+
+.gauge {
+  font-size: 16px !important;
+}
+
+.indicator mat-expansion-panel-header {
+  background: none !important;
+}
+
+.indicator .mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
+  background: $c-navbar !important;
+  margin-bottom: 20px;
+}
+
+// Dark theme
+.dark-theme .card-body mat-label {
+  width: 150px;
+  color: $c-white;
+}
+
+.dark-theme .amcharts-range-selector-bottom .amcharts-range-selector-period-wrapper {
+  float: right;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  color: $c-white !important;
+}
+
+.dark-theme .amcharts-range-selector-bottom .amcharts-range-selector-range-wrapper {
+  float: left;
+  width: 100%;
+  text-align: center;
+  color: $c-white !important;
+}
+
+.dark-theme mat-expansion-panel.mat-expansion-panel.mat-expanded {
+  background: transparent;
+  box-shadow: none;
+}
+
+.dark-theme .card {
+  background: transparent !important;
+  border-radius: 10px;
+}
+
+// Light theme
+.light-theme .amcharts-range-selector-bottom .amcharts-range-selector-range-wrapper {
+  float: left;
+  width: 100%;
+  text-align: center;
+  color: $c-black !important;
+}
+
+.light-theme .amcharts-range-selector-bottom .amcharts-range-selector-period-wrapper {
+  float: right;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  color: $c-black !important;
+}
+
+.light-theme .card-body mat-label {
+  width: 150px;
+  color: $c-black;
+}
+
+.light-theme .card {
+  background: transparent !important;
+}
+
+.dash .mat-form-field, .mat-form-field {
+  width: 80%;
+}
+.dash .indicator .mat-expansion-panel-header.mat-expanded:focus, .dash .mat-expansion-panel-header.mat-expanded:hover{
+  background: transparent !important;
+}

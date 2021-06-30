@@ -1,0 +1,60 @@
+@import '/src/assets/styles/vars';
+
+.indicator-list {
+  padding: 10px !important;
+  color: $c-white;
+}
+
+.card-indicator {
+  background: $c-navbar !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  padding-top: 10px;
+}
+
+.title {
+  color: $c-orange;
+  font-size: 16px;
+}
+
+.indicator-title-white {
+  color: $c-white;
+}
+
+.indicator-title-black {
+  color: $c-black;
+}
+
+button.mat-primary {
+  background-color: $c-orange;
+}
+
+.indicator-type-dark {
+  color: #C0C0C0;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.indicator-type-light {
+  color: #4C4C4C;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.button-style {
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .button-style {
+    margin-right: 10px;
+    width: 45%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .button-style {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}

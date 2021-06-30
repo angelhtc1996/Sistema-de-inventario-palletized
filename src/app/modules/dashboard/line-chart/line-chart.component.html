@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <!--Customer-->
+    <div class="col-sm-12 col-md-12 col-lg-12 sear" *ngIf="isAdmin">
+      <mat-form-field class="palletized-form-field mx-auto">
+        <mat-label>{{ translations.LANG.EN.DASHBOARD.SELECT_CUSTOMERS }}</mat-label>
+        <mat-select (selectionChange)="showOptionVal($event.value)" [value]="customerId">
+          <mat-option class="custom" [value]="customer.CustomerId" *ngFor="let customer of customers">
+            {{ customer.CompanyName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!--Spinner-->
+    <div class="col-sm-12 col-md-12 col-lg-12" style="height: 150px;" *ngIf="!showChart && customerId > 0 && isAdmin">
+      <mat-spinner class="mat-spinner-color mx-auto"></mat-spinner>
+    </div>
+
+    <!--Line-->
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div style="width: 100%; height: 500px" [ngStyle]="{ 'display': showChart && chartData.length > 0 ? 'block' : 'none' }">
+        <div [id]="'chartdiv' + chartNumber" style="width: 100%; height: 500px !important"></div>
+      </div>
+      <p class="deactivate-text" [ngStyle]="{ 'display': showChart && !currentChart ? 'block' : 'none' }">
+        {{ translations.LANG.EN.DASHBOARD.NO_DATA }}
+      </p>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div [id]="'selectordiv' + chartNumber" [ngStyle]="{ 'display': showChart && chartData.length > 0 ? 'block' : 'none' }"></div>
+    </div>
+  </div>
+</div>

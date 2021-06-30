@@ -1,0 +1,201 @@
+<div *ngIf="!isMobile; else Mobile">
+  <div class="landscape"><p class="title-landscape">"Please turn the phone to portrait mode to access the information."</p></div>
+  <mat-toolbar color="dark" class="menu-desktop">
+    <span class="span-logo">
+      <img src="assets/images/e.png" class="logo" alt="logo">
+    </span>
+    <span class="material-icons sort-menu" (click)="onSinenavToggle()">sort</span>
+    
+    <button mat-button class="name" *ngIf="currentUser.status === 1 && currentUser.clientId !== 'unasigned'">
+      Your customer is {{ currentUser.companyName | titlecase }}
+    </button>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menuUser" class="name">{{ currentUser.name | titlecase }}</button>
+    <div *ngIf="!currentUser.photoUrl; else photoGoogle">
+      <span>
+        <mat-icon>person_pin</mat-icon>
+      </span>
+    </div>
+    <ng-template #photoGoogle>
+      <img class="img-profile" [src]="currentUser.photoUrl" alt="profile" />
+    </ng-template>
+    <div class="evento">
+      <span class="material-icons">brightness_3</span>
+      <mat-slide-toggle (click)="toggleTheme()"></mat-slide-toggle>
+      <span class="material-icons">brightness_6</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menuNotifications" class="icon">
+      <mat-icon [matBadge]="notificacions.totalResults" [matBadgeHidden]="notificacions.totalResults ? false : true">notifications</mat-icon>
+    </button>
+
+    <!-- Notifications list  -->
+    <mat-menu #menuNotifications="matMenu" class="fondo">
+      <div *ngIf="notificacions.totalResults; else noNotif">
+        <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+          <div *cdkVirtualFor="let notificacion of notificacions.notificacionList" class="viewport-item">
+            <div class="Notif">
+              <span class="material-icons">notifications</span>
+              {{ notificacion }}
+              <span class="material-icons" (click)="clearNotifications()">close</span>
+            </div>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </div>
+      <ng-template #noNotif>
+        <div class="viewport">No Notificacions</div>
+      </ng-template>
+    </mat-menu>
+
+    <!-- User Menu -->
+    <mat-menu #menuUser="matMenu" class="set">
+      <button mat-menu-item (click)="logout()">
+        <span class="material-icons">exit_to_app</span>
+        Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-drawer-container class="container-fluid sidenav-menu menu-desktop" autosize>
+    <mat-drawer #drawer mode="side" mode="side" class="menu" opened #sidenav [@onSideNavChange]="sideNavState ? 'open' : 'close'">
+      <div fxLayout="column">
+        <mat-nav-list>
+          <mat-list-item>
+            <a routerLink="dashboard" routerLinkActive="active">
+              <img src="assets/images/dashboard.png" class="img-icon" alt="dashboard" />
+              <p mat-line>Dashboard</p>
+            </a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <a routerLink="orders" routerLinkActive="active">
+              <img src="assets/images/orders.png" class="img-icon" alt="orders" />
+              <p mat-line>Orders</p>
+            </a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <a routerLink="inventory" routerLinkActive="active">
+              <img src="assets/images/inventory.png" class="img-icon" alt="inventory" />
+              <p mat-line>Inventory</p>
+            </a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item class="camera">
+            <a routerLink="snap-package" routerLinkActive="active">
+              <img src="assets/images/camera.png" class="img-icon" alt="camera" />
+              <p mat-line>Snap Package</p>
+            </a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item class="ad">
+            <div  style="display: flex;" class="admin">
+              <a *ngIf='currentUser.role == "Administrator"' routerLink="administration" routerLinkActive="active">
+                <img src="assets/images/admin.png" class="img-icon" alt="admin" />
+                <p mat-line>Administration</p>
+              </a>
+            </div>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content fxFill>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>    
+
+<ng-template #Mobile>
+  <div fxLayout="column" fxFlexFill class="menu-mobile">
+    <mat-toolbar class="navbar-color mat-elevation-z8 p-0" fxLayout="row" fxLayoutAlign="start stretch"
+      style="z-index: 2">
+      <button mat-button (click)="drawer.toggle()" class="mobile">
+        <img src="assets/images/icon-white.png" class="icon-mobile" alt="mobile" />
+        {{ title }}
+      </button>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px" class="pl-3">
+      </div>
+      <span class="spacer"></span>
+      <div class="evento">
+        <span class="material-icons">brightness_3</span>
+        <mat-slide-toggle (click)="toggleTheme()"></mat-slide-toggle>
+        <span class="material-icons">brightness_6</span>
+      </div>
+    </mat-toolbar>
+    <mat-drawer-container fxFlex autosize class="sidenav-menu-m" fxFill fxShow>
+      <mat-drawer #drawer opened>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div *ngIf="!currentUser.photoUrl; else photoGoogle">
+            <span>
+              <mat-icon>person_pin</mat-icon>
+            </span>
+          </div>
+          <ng-template #photoGoogle>
+            <img class="img-profile" [src]="currentUser.photoUrl" alt="profile" />
+          </ng-template> 
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button mat-button [matMenuTriggerFor]="menuUser" class="name">{{ currentUser.name | titlecase }}</button>
+        </div>
+        <span class="spacer"></span>
+        <button mat-button class="company" *ngIf="currentUser.status === 1 && currentUser.clientId !== 'unasigned'">
+          Your customer is {{ currentUser.companyName | titlecase }}
+        </button>
+        <div fxLayout="column">                    
+          <div fxLayout="row" class="firts-row">
+            <a routerLink="dashboard" (click)="drawer.toggle()">
+              <img src="assets/images/dashboard.png" class="img-m-icon" alt="dashboard" />
+              Dashboard
+            </a>
+          </div>
+          <div fxLayout="row" class="second-row">
+            <a routerLink="orders" (click)="drawer.toggle()">
+              <img src="assets/images/orders.png" class="img-m-icon" alt="orders" />
+              Orders
+            </a>
+          </div>
+          <div fxLayout="row" class="third-row">
+            <a routerLink="inventory" (click)="drawer.toggle()">
+              <img src="assets/images/inventory.png" class="img-m-icon" alt="inventory" />
+              Inventory
+            </a>
+          </div>
+          <div fxLayout="row" class="fourth-row">
+            <a routerLink="snap-package" (click)="drawer.toggle()">
+              <img src="assets/images/camera.png" class="img-m-icon" alt="camera" />
+              Snap Package
+            </a>
+          </div>
+
+          <div fxLayout="row" class="last-row">
+            <div fxLayout="column" fxFlex="50" fxLayoutAlign="center end">
+              <a *ngIf='currentUser.role == "Administrator"' routerLink="administration" (click)="drawer.toggle()">
+                <img src="assets/images/admin.png" class="img-m-icon" alt="admin" />
+                Administration
+              </a>
+            </div>
+          </div>
+          <div fxLayout="row" class="exit">
+              <p class="logout"><span class="material-icons" (click)="logout()">exit_to_app</span></p>
+          </div>
+        </div>
+      </mat-drawer>
+
+      <!--PAGES -->
+      <div style="display: inline;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-container>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+

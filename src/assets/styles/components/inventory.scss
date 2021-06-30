@@ -1,0 +1,23 @@
+@import '/src/assets/styles/vars';
+
+img.img-icon {
+  width: 20%;
+  height: auto;
+  margin-left: 15px;
+  margin-right:10px;
+}
+
+.inventory table th.mat-header-cell:first-of-type {
+  width: 200px;
+  background-position-y: center;
+}
+
+// Dark theme
+.dark-theme .inventory td {
+  color: $c-white !important;
+}
+
+// Light theme
+.light-theme .inventory td {
+  color: $c-black !important;
+}

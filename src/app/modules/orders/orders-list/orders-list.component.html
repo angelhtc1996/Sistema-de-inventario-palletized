@@ -1,0 +1,95 @@
+<mat-drawer-container autosize class="contenedor order">
+    
+    <div class="row form-sear">
+            <div class="col-lg-4 col-md-4 col-sm-4 sear">
+                <mat-form-field class="palletized-form-field">
+                    <mat-label>{{ translate.LANG.EN.ORDERS.SEARCH_FIELD }}</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" #input><span class="material-icons">search</span>
+                </mat-form-field>
+                <a (click)="popUpConfiguration()" class="icon-vis"><img src="assets/images/search.png" class="img-icon" alt="search"></a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 p-0 sear">
+                <mat-form-field *ngIf="currentUser?.role === 'Administrator'">
+                    <mat-label>{{ translate.LANG.EN.ORDERS.CUSTOMER_FIELD }}</mat-label>
+                    <mat-select (selectionChange)="selectCustomer($event)" [disabled]="customers.length == 0">
+                        <mat-option *ngFor="let customer of customers" [value]="customer.CustomerId" class="custom">
+                            {{customer.CompanyName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Search Options -->
+            <div class="col-lg-4 col-md-4 col-sm-4 cale">
+                <a [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" class="icon-calen"><img src="assets/images/calendar.png" class="img-icon-calendar" alt="calendar"></a>
+                <mat-menu #menu="matMenu" [hasBackdrop]="false" class="calendar">
+                    <div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+
+                        <mat-radio-group [(ngModel)]="typeOfDate">
+                            <mat-radio-button value="1" checked>Created Date</mat-radio-button>
+                            <mat-radio-button value="2">Shipped Date</mat-radio-button>
+                        </mat-radio-group>
+
+                        <mat-form-field class="palletized-form-field">
+                            <mat-date-range-input [formGroup]="dateRange" [rangePicker]="datePicker">
+                                <input matStartDate placeholder="From" formControlName="start">
+                                <input matEndDate placeholder="To" formControlName="end">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #datePicker></mat-date-range-picker>
+                        </mat-form-field>
+
+                        <div class="espacio">
+                            <button mat-flat-button (click)="clearDate()" class="mr-4">Clear</button>
+                            <button mat-flat-button class="apply" (click)="applyDate()">Apply</button>
+                        </div>
+                    </div>
+
+                </mat-menu>
+            </div>
+
+            <div *ngIf="isRequesting">
+                <mat-spinner class="mat-spinner-color"></mat-spinner>
+            </div>
+
+    </div>
+    <cdk-virtual-scroll-viewport tvsItemSize="48" style="height: 100vh;">
+
+            <div>
+
+                <table mat-table [dataSource]="dataSource" cdkDropList cdkDropListOrientation="horizontal"
+                    (cdkDropListDropped)="drop($event)" matSort class="mat-elevation-z8 table-striped">
+
+                    <ng-container *ngFor="let column of columns" [matColumnDef]="column.matColumnDef">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header class="header-palletized">
+                            {{column.header}}</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div *ngIf="column.cell(element) !== 'undefined'"
+                                [ngClass]="column.cell(element) == element.Status ? 'Status-' + element.Status : ''">
+                                {{column.cell(element)}}
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <!-- Show the tooltip if we are on mobile -->
+                    <div *ngIf="!isMobile">
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+                    </div>
+                    <div *ngIf="isMobile">
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"
+                            [matTooltip]="row.CreationDate"></tr> 
+                    </div>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="6">{{ translate.LANG.EN.SHARED_MSG.NO_MATCH_DATA }}"{{input.value}}"</td>
+                    </tr>
+                </table>
+            </div>
+    </cdk-virtual-scroll-viewport>
+    <mat-drawer #sideNav mode="side" position="end" class="side-left-details">
+        <app-orders-detail [rowData]="rowData" [sideNav]="sideNav"></app-orders-detail>
+    </mat-drawer>
+
+</mat-drawer-container>

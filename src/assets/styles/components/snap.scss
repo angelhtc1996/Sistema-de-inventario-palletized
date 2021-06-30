@@ -1,0 +1,48 @@
+@import '/src/assets/styles/vars';
+
+.snap {
+  width: auto;
+  padding-left: 10px;
+  padding-top: 20px;
+  margin: auto;
+  height: 94vh !important;
+}
+
+.snap table th.mat-header-cell:first-of-type, .inventory table th.mat-header-cell:first-of-type {
+  width: 210px !important;
+  background-position-y: center;
+}
+
+.date .material-icons {
+  margin-left: 25px;
+  font-size: 14px;
+}
+
+.snap-modal .mat-dialog-title {
+  background: $c-navbar;
+  padding: 10px 20px;
+  color: $c-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  box-shadow: 0 -6px 23px 4px $c-black;
+}
+
+.snap-modal .mat-dialog-container {
+  background: $c-white;
+  padding: 0;
+}
+
+.snap-modal button.mat-focus-indicator.mat-button.mat-button-base a:nth-child(1) {
+  padding: 0 !important;
+  line-height: 0;
+  color: $c-orange;
+}
+
+.snap-modal button.mat-focus-indicator.mat-button.mat-button-base:nth-child(2) {
+  color: $c-white;
+}
+
+.snap-modal .mat-dialog-content {
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+@import '/src/assets/styles/vars';
+
+.card-body {
+  overflow: hidden;
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: $c-orange !important;
+}
+
+.deactivate-text {
+  text-align: center;
+  color: $c-gray-light;
+  font-size: 2rem;
+  bottom: 0px;
+  line-height: 1;
+  font-family: $f-primary;
+  width: 100%;
+}
+
+.deactivate-text p {
+  margin: 25%;
+}
+
+.message {
+  height: 90vh;
+  display: flex;
+}

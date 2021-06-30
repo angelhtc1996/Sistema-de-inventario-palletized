@@ -1,0 +1,49 @@
+@import '/src/assets/styles/vars';
+
+.deactivate-text {
+  text-align: center;
+  color: $c-gray-light;
+  font-size: 1.7rem;
+  bottom: 0px;
+  line-height: 1;
+  font-family: $f-primary;
+}
+
+.deactivate-text p {
+  margin: 25%;
+}
+
+.selected {
+  background-color: #5E5E5E;
+  color: $c-white;
+}
+
+.mat-spinner-color::ng-deep circle {
+  stroke: $c-orange !important;
+}
+
+@media(max-width: 768px) {
+  mat-label {
+    font-size: 15px;
+  }
+
+  .btn-mobile {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .m-10-mobile {
+    margin-top: 10% !important;
+  }
+}
+
+@media(max-width: 568px) {
+  .btn-mobile {
+    font-size: 7px;
+    font-weight: bold;
+  }
+
+  .m-10-mobile {
+    margin-top: 10% !important;
+  }
+}
